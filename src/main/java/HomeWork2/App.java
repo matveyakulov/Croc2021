@@ -8,7 +8,7 @@ import HomeWork2.Zoo.ZooPark;
 public class App {
 
     public static void main(String[] args) {
-        ZooPark zoo = new ZooPark(){{
+        ZooPark zoo = new ZooPark("Enot"){{
             add("Cat");
             add("Dog");
             add("Lion");

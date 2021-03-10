@@ -20,6 +20,12 @@ public class Aviary {
         date = new ArrayList<>();
     }
 
+    public Aviary(Integer num, String date){
+        this();
+        this.num.add(num);
+        this.date.add(date);
+    }
+
     /**
      * Добавляет новую запись уборки
      * @param num номер вольера

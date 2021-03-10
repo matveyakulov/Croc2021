@@ -20,6 +20,12 @@ public class Feeding {
         date = new ArrayList<>();
     }
 
+    public Feeding(String name, String date){
+        this();
+        this.name.add(name);
+        this.date.add(date);
+    }
+
     /**
      * Добавляет новую запись кормления
      * @param name имя животного

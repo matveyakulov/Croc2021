@@ -15,6 +15,10 @@ public class ZooPark {
         list = new ArrayList<>();
     }
 
+    public ZooPark(String name){
+        this();
+        list.add(name);
+    }
     /**
      * Добавляет новое животное
      * @param name имя животного

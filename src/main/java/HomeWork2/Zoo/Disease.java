@@ -25,6 +25,12 @@ public class Disease {
         date = new ArrayList<>();
     }
 
+    public Disease(String name, String disease, String date){
+        this();
+        this.name.add(name);
+        this.disease.add(disease);
+        this.date.add(date);
+    }
     /**
      * Добавляет новую болезнь
      * @param name имя животного
