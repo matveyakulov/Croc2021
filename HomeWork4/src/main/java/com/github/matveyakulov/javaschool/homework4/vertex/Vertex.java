@@ -21,17 +21,9 @@ public class Vertex<T> {
     private Integer num;
 
     public Vertex(Integer num, T id, String name) {
+        this.num = num;
         this.id = id;
         this.name = name;
-        this.num = num;
-    }
-
-    public T getId() {
-        return id;
-    }
-
-    public String getName(){
-        return name;
     }
 
     public Integer getNum() {

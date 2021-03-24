@@ -9,15 +9,20 @@ public interface FindComponents{
 
     /**
      * Обход графа в глубину.
-     * @param name имя вершины, с которой начинается обход.
+     * @param num номер вершины, с которой начинается обход.
      */
-    void dfs(Integer name);
+    void dfs(Integer num);
 
     /**
      * Поиск компонент связности в графе.
-     * @return
      */
-    List<String> findComponents();
+    void findComponents();
+
+    /**
+     * Возвращает упорядоченный список компонент связности графа.
+     * @return упорядоченный список компонент связности графа.
+     */
+    List<String> getComponents();
 
     /**
      * Возвращает количество компонент связности в графе.

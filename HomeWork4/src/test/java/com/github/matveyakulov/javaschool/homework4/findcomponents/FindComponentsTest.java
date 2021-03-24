@@ -1,7 +1,6 @@
 package com.github.matveyakulov.javaschool.homework4.findcomponents;
 
 import com.github.matveyakulov.javaschool.homework4.adjacencymatrix.AdjacencyMatrix;
-import com.github.matveyakulov.javaschool.homework4.components.Components;
 import com.github.matveyakulov.javaschool.homework4.vertex.Vertex;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
@@ -24,6 +23,9 @@ public class FindComponentsTest extends TestCase {
     private Vertex vertex3;
     private Vertex vertex4;
 
+    /**
+     * Сборка графа.
+     */
     public void setUp(){
         adjMatr = new AdjacencyMatrix<>();
         vertex1 = new Vertex(1, "qwe", "dss");
@@ -37,16 +39,19 @@ public class FindComponentsTest extends TestCase {
         adjMatr.addEdge(vertex1, vertex2);
         adjMatr.addEdge(vertex2, vertex3);
         adjMatr.addEdge(vertex3, vertex1);
-
     }
 
+    /**
+     * Тест рассчета количества компонент графа.
+     */
     public void testCountComponents(){
-        adjMatr.findComponents();
         Assertions.assertEquals(2, adjMatr.getCountComponents());
     }
 
+    /**
+     * Тест вывода списка компонент графа.
+     */
     public void testFindComponents(){
-        Components components = new Components(adjMatr.findComponents());
-        Assertions.assertEquals("[[4][123]]", components.toString());
+        Assertions.assertEquals("[[4], [123]]", adjMatr.getComponents().toString());
     }
 }

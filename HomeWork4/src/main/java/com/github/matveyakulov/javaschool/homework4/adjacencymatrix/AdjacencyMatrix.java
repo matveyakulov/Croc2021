@@ -40,6 +40,7 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
      */
     public void addVertex(T vertex){
         adjMatr.put(vertex.getNum(), new ArrayList<>());
+        this.findComponents();
     }
 
     /**
@@ -50,6 +51,7 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
     public void addEdge(T from, T to){
         adjMatr.get(from.getNum()).add(to);
         adjMatr.get(to.getNum()).add(from);  // так как граф неориентированный
+        this.findComponents();
     }
 
     /**
@@ -67,6 +69,8 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
             }
         }
         adjMatr.remove(vertex.getNum());
+        this.findComponents();
+
 
     }
 
@@ -78,6 +82,7 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
     public void removeEdge(T from, T to){
         adjMatr.get(from.getNum()).remove(to);
         adjMatr.get(to.getNum()).remove(from);
+        this.findComponents();
     }
 
     /**
@@ -108,25 +113,8 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
     }
 
     /**
-     * Возвращает список вершин, связанных ребром с заданной.
-     * @param vertex вершина.
-     * @return список вершин, связанных ребром с заданной.
-     */
-    public List<T> get(T vertex) {
-        return adjMatr.get(vertex.getNum());
-    }
-
-    /**
-     * Возвращает множество вершин.
-     * @return множество вершин.
-     */
-    public Set<Integer> keySet() {
-        return adjMatr.keySet();
-    }
-
-    /**
      * Обход графа в глубину.
-     * @param vertexKey идентификатор вершины   , с которой начинается обход.
+     * @param vertexKey идентификатор вершины, с которой начинается обход.
      */
     public void dfs(Integer vertexKey) {
         component.append(vertexKey);
@@ -141,9 +129,8 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
 
     /**
      * Поиск компонент связности в графе.
-     * @return строка компонентов.
      */
-    public List<String> findComponents() {
+    public void findComponents() {
         component = new StringBuilder();
         countComponents = 0;
         visited = new HashMap<>();
@@ -158,10 +145,17 @@ public class AdjacencyMatrix<T extends Vertex> implements FindComponents{
                 component.append("] ");
             }
         }
-        List<String> list = Arrays.asList(component.toString().split(" "));
-        return list;
     }
 
+    /**
+     * Возвращает упорядоченный список компонент связности графа.
+     * @return упорядоченный список компонент связности графа.
+     */
+    public List<String> getComponents(){
+        List<String> componentList = Arrays.asList(component.toString().split(" "));
+        componentList.sort(Comparator.comparing(String::length));
+        return componentList;
+    }
     /**
      * Возвращает количество компонент связности в графе.
      *
