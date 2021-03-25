@@ -29,6 +29,7 @@ public class AdjacencyMatrixTest extends TestCase {
         adjMatr.addVertex(vertex1);
         vertex2 = new Vertex(2, "qwe1", "dss");
         adjMatr.addVertex(vertex2);
+
     }
 
     /**
@@ -45,7 +46,7 @@ public class AdjacencyMatrixTest extends TestCase {
      */
     public void testAddEdge(){
         adjMatr.addEdge(vertex1, vertex2);
-        Assertions.assertEquals(true, adjMatr.checkEdge(vertex1, vertex2));
+        Assertions.assertEquals(true, adjMatr.checkEdge(vertex1, vertex2)); // тут же тест метода checkEdge
     }
 
     /**
@@ -53,7 +54,7 @@ public class AdjacencyMatrixTest extends TestCase {
      */
     public void testRemoveVertex(){
         adjMatr.removeVertex(vertex1);
-        Assertions.assertEquals(false, adjMatr.checkVertex(vertex1));
+        Assertions.assertEquals(false, adjMatr.checkVertex(vertex1));  // тут же тест метода checkVertex
     }
 
     /**

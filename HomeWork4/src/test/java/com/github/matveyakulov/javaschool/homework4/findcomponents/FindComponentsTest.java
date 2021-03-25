@@ -22,6 +22,7 @@ public class FindComponentsTest extends TestCase {
     private Vertex vertex2;
     private Vertex vertex3;
     private Vertex vertex4;
+    private Vertex vertex5;
 
     /**
      * Сборка графа.
@@ -32,10 +33,12 @@ public class FindComponentsTest extends TestCase {
         vertex2 = new Vertex(2, "qw", "dss");
         vertex3 = new Vertex(3, "qe", "dss");
         vertex4 = new Vertex(4, "we", "dss");
+        vertex5 = new Vertex(5, "we", "dss");
         adjMatr.addVertex(vertex1);
         adjMatr.addVertex(vertex2);
         adjMatr.addVertex(vertex3);
         adjMatr.addVertex(vertex4);
+        adjMatr.addVertex(vertex5);
         adjMatr.addEdge(vertex1, vertex2);
         adjMatr.addEdge(vertex2, vertex3);
         adjMatr.addEdge(vertex3, vertex1);
@@ -45,13 +48,13 @@ public class FindComponentsTest extends TestCase {
      * Тест рассчета количества компонент графа.
      */
     public void testCountComponents(){
-        Assertions.assertEquals(2, adjMatr.getCountComponents());
+        Assertions.assertEquals(3, adjMatr.getCountComponents());
     }
 
     /**
      * Тест вывода списка компонент графа.
      */
     public void testFindComponents(){
-        Assertions.assertEquals("[[4], [123]]", adjMatr.getComponents().toString());
+        Assertions.assertEquals("[[4], [5], [123]]", adjMatr.getComponents().toString());
     }
 }
