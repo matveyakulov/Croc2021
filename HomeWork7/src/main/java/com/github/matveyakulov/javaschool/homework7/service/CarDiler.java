@@ -1,0 +1,191 @@
+package com.github.matveyakulov.javaschool.homework7.service;
+
+import com.github.matveyakulov.javaschool.homework7.model.Car;
+import com.github.matveyakulov.javaschool.homework7.database.model.Controller;
+
+import org.apache.derby.jdbc.EmbeddedDataSource;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Класс - репозиторий.
+ */
+public class CarDiler extends Controller {
+
+    /**
+     * Название таблицы.
+     */
+    private final String TABLE_NAME = "car";
+
+    /**
+     * Идентификатор.
+     */
+    private static int id = 1;
+
+    /**
+     * Data Source.
+     */
+    private EmbeddedDataSource dataSource;
+
+    public CarDiler(EmbeddedDataSource dataSource) {
+        this.dataSource = dataSource;
+        initTable();
+    }
+
+    /**
+     * Создание таблицы, если ее нет.
+     */
+    private void initTable() {
+        System.out.println(String.format("Start initializing %s table", TABLE_NAME));
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            DatabaseMetaData databaseMetadata = connection.getMetaData();
+            ResultSet resultSet = databaseMetadata.getTables(
+                    null,
+                    null,
+                    // Несмотря на то, что мы создаем таблицу в нижнем регистре (и дальше к ней так же обращаемся),
+                    // поиск мы осуществляем в верхнем. Такие вот приколы
+                    TABLE_NAME.toUpperCase(),
+                    new String[]{"TABLE"});
+            if (resultSet.next()) {
+                System.out.println("Table has already been initialized");
+            } else {
+                statement.executeUpdate(
+                        "CREATE TABLE "
+                                + TABLE_NAME
+                                + " ("
+                                + "id INTEGER, "
+                                + "hp INTEGER,"
+                                + "number VARCHAR(10),"
+                                + "wanted BOOLEAN,"
+                                + "date Date,"
+                                + "time Time"
+                                + ")");
+                System.out.println("Table was successfully initialized");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error occurred during table initializing: " + e.getMessage());
+        } finally {
+            System.out.println("=========================");
+        }
+    }
+
+    @Override
+    public void create(Car car) {
+        final String sqlQuery = "INSERT INTO " + TABLE_NAME + " (id, hp, number, wanted, date, time)" +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+            statement.setInt(1, id);
+            statement.setInt(2, car.getHp());
+            statement.setString(3, car.getNumber());
+            statement.setBoolean(4, car.isWanted());
+            statement.setDate(5, Date.valueOf(car.getDate()));
+            statement.setTime(6, Time.valueOf(car.getTime()));
+
+            id++;
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public Car read(int id) {
+
+        final String sqlQuery = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
+        Car car = null;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                car = new Car(
+                        resultSet.getInt("hp"),
+                        resultSet.getString("number"),
+                        resultSet.getBoolean("wanted"),
+                        resultSet.getDate("date").toLocalDate(),
+                        resultSet.getTime("time").toLocalTime());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+        return car;
+    }
+
+    @Override
+    public void update(int id, Car car) {
+        final String sqlQuery = "UPDATE " + TABLE_NAME + " SET hp = ?, number = ?," +
+                " wanted = ?, date = ?, time = ? WHERE id = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+            preparedStatement.setInt(1, car.getHp());
+            preparedStatement.setString(2, car.getNumber());
+            preparedStatement.setBoolean(3, car.isWanted());
+            preparedStatement.setDate(4, Date.valueOf(car.getDate()));
+            preparedStatement.setTime(5, Time.valueOf(car.getTime()));
+            preparedStatement.setInt(6, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(int id) {
+
+        final String sqlQuery = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+
+    }
+
+    @Override
+    public List<Car> findAll() {
+        final String sqlQuery = "SELECT * FROM " + TABLE_NAME;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            List<Car> carList = new ArrayList<>();
+            while (resultSet.next()) {
+                carList.add(
+                        new Car(
+                                resultSet.getInt("hp"),
+                                resultSet.getString("number"),
+                                resultSet.getBoolean("wanted"),
+                                resultSet.getDate("date").toLocalDate(),
+                                resultSet.getTime("time").toLocalTime())
+                );
+            }
+            return carList;
+        } catch (Exception e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void deleteAll() {
+        id = 1;  // начинаем с начала, так как все записи стерли
+        final String sqlQuery = "DELETE FROM " + TABLE_NAME;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            statement.execute(sqlQuery);
+
+        } catch (SQLException e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+
+
+    }
+}

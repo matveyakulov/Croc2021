@@ -2,4 +2,9 @@
 *.idea
 out
 # Project exclude paths
-/target/
+/HomeWork3/target/
+/HomeWork4/target/
+/HomeWork5/target/
+/HomeWork6/target/
+/HomeWork7/target/
+*.log
