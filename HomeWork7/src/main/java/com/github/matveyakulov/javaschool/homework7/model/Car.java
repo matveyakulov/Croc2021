@@ -4,16 +4,34 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * Машина.
+ */
 public class Car {
 
+    /**
+     * Количество лошадей.
+     */
     private int hp;
 
+    /**
+     * Гос номер.
+     */
     private String number;
 
+    /**
+     * В розыске( false - нет, true - да).
+     */
     private boolean wanted;
 
+    /**
+     * Дата производства.
+     */
     private final LocalDate date;
 
+    /**
+     * Время производства.
+     */
     private final LocalTime time;
 
     public Car(int hp, String number, boolean wanted, String date, String time) {

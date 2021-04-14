@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Класс тестов для CarDiler.
@@ -44,16 +46,34 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода create.
+     * Тест метода create с одним параметром.
      */
-    public void testCreate() {
+    public void testCreate1Param() {
         carDiler.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
         carDiler.create(car1);
         carDiler.create(car);
-        List<Car> carList = carDiler.findAll();
+        Map<Integer, Car> carList = carDiler.findAll();
+        Set<Integer> keySet = carList.keySet();
         System.out.println("You have:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
+        }
+        Assertions.assertEquals(2, carList.size());
+
+    }
+
+    /**
+     * Тест метода create с двумя параметрами.
+     */
+    public void testCreate2Param() {
+        carDiler.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
+        carDiler.create(2,car1);
+        carDiler.create(1,car);
+        Map<Integer, Car> carList = carDiler.findAll();
+        Set<Integer> keySet = carList.keySet();
+        System.out.println("You have:");
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(2, carList.size());
 
@@ -77,17 +97,19 @@ public class CarDilerTest extends TestCase {
         carDiler.deleteAll();
         carDiler.create(car);
         carDiler.create(car1);
-        List<Car> carList = carDiler.findAll();
+        Map<Integer, Car> carList = carDiler.findAll();
         System.out.println("Before");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        Set<Integer> keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(2, carList.size());
         carDiler.delete(1);
         carList = carDiler.findAll();
         System.out.println("After:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(1, carList.size());
 
@@ -99,18 +121,23 @@ public class CarDilerTest extends TestCase {
      */
     public void testUpdate() {
 
-        List<Car> carList = carDiler.findAll();
+        carDiler.deleteAll();
+        carDiler.create(car);
+        carDiler.create(car1);
+        Map<Integer, Car> carList = carDiler.findAll();
         System.out.println("Before:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        Set<Integer> keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Car car = new Car(300, "qwe", false, "2019-02-05", "10:45:15");
-        carDiler.update(2, car);
-        Assertions.assertEquals(car, carDiler.read(2));
+        carDiler.update(1, car);
+        Assertions.assertEquals(car, carDiler.read(1));
         carList = carDiler.findAll();
         System.out.println("After:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
 
     }
@@ -122,7 +149,7 @@ public class CarDilerTest extends TestCase {
         carDiler.deleteAll();
         carDiler.create(car1);
         carDiler.create(car);
-        List<Car> carList = carDiler.findAll();
+        Map<Integer, Car> carList = carDiler.findAll();
         Assertions.assertEquals(2, carList.size());
         carDiler.deleteAll();
         carList = carDiler.findAll();

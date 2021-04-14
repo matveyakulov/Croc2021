@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Тесты для класса CarService.
@@ -61,10 +63,28 @@ public class CarServiceTest extends TestCase {
         carService.deleteAll();
         carService.create(car1);
         carService.create(car);
-        List<Car> carList = carService.findAll();
+        Map<Integer, Car> carList = carDiler.findAll();
+        Set<Integer> keySet = carList.keySet();
         System.out.println("You have:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
+        }
+        Assertions.assertEquals(2, carList.size());
+
+    }
+
+    /**
+     * Тест метода create с двумя параметрами.
+     */
+    public void testCreate2Param() {
+        carService.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
+        carService.create(2,car1);
+        carService.create(1,car);
+        Map<Integer, Car> carList = carService.findAll();
+        Set<Integer> keySet = carList.keySet();
+        System.out.println("You have:");
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(2, carList.size());
 
@@ -88,17 +108,19 @@ public class CarServiceTest extends TestCase {
         carService.deleteAll();
         carService.create(car);
         carService.create(car1);
-        List<Car> carList = carService.findAll();
+        Map<Integer, Car> carList = carService.findAll();
         System.out.println("After");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        Set<Integer> keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(2, carList.size());
         carService.delete(1);
         carList = carService.findAll();
         System.out.println("Before:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Assertions.assertEquals(1, carList.size());
 
@@ -110,18 +132,23 @@ public class CarServiceTest extends TestCase {
      */
     public void testUpdate() {
 
-        List<Car> carList = carService.findAll();
+        carDiler.deleteAll();
+        carDiler.create(car);
+        carDiler.create(car1);
+        Map<Integer, Car> carList = carService.findAll();
         System.out.println("After:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        Set<Integer> keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
         Car car = new Car(300, "qwe", false, "2019-02-05", "10:45:15");
         carService.update(2, car);
-
+        Assertions.assertEquals(car, carDiler.read(2));
         carList = carService.findAll();
         System.out.println("Before:");
-        for (int i = 0; i < carList.size(); i++) {
-            System.out.println(carList.get(i));
+        keySet = carList.keySet();
+        for (Integer key : keySet) {
+            System.out.println(key + " " + carList.get(key));
         }
 
     }
@@ -133,7 +160,7 @@ public class CarServiceTest extends TestCase {
         carService.deleteAll();
         carService.create(car1);
         carService.create(car);
-        List<Car> carList = carService.findAll();
+        Map<Integer, Car> carList = carService.findAll();
         Assertions.assertEquals(2, carList.size());
         carService.deleteAll();
         carList = carService.findAll();

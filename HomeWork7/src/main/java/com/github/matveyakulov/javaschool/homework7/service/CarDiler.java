@@ -6,8 +6,8 @@ import com.github.matveyakulov.javaschool.homework7.database.model.Controller;
 import org.apache.derby.jdbc.EmbeddedDataSource;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 /**
  * Класс - репозиторий.
@@ -22,7 +22,7 @@ public class CarDiler extends Controller {
     /**
      * Идентификатор.
      */
-    private static int id = 1;
+    private static int id;
 
     /**
      * Data Source.
@@ -39,6 +39,16 @@ public class CarDiler extends Controller {
      */
     private void initTable() {
         System.out.println(String.format("Start initializing %s table", TABLE_NAME));
+        Map<Integer, Car> carList = findAll();
+        Set<Integer> set = carList.keySet();
+        Iterator<Integer> iter = set.iterator();
+        while (iter.hasNext()) {
+            id = iter.next() + 1; // получаю последний id
+        }
+        if (id == 0) {
+            id = 1;
+        }
+        System.out.println(id);
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             DatabaseMetaData databaseMetadata = connection.getMetaData();
@@ -76,7 +86,6 @@ public class CarDiler extends Controller {
     public void create(Car car) {
         final String sqlQuery = "INSERT INTO " + TABLE_NAME + " (id, hp, number, wanted, date, time)" +
                 "VALUES (?, ?, ?, ?, ?, ?)";
-
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
             statement.setInt(1, id);
@@ -85,8 +94,25 @@ public class CarDiler extends Controller {
             statement.setBoolean(4, car.isWanted());
             statement.setDate(5, Date.valueOf(car.getDate()));
             statement.setTime(6, Time.valueOf(car.getTime()));
-
             id++;
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void create(int id, Car car) {
+        final String sqlQuery = "INSERT INTO " + TABLE_NAME + " (id, hp, number, wanted, date, time)" +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+            statement.setInt(1, id);
+            statement.setInt(2, car.getHp());
+            statement.setString(3, car.getNumber());
+            statement.setBoolean(4, car.isWanted());
+            statement.setDate(5, Date.valueOf(car.getDate()));
+            statement.setTime(6, Time.valueOf(car.getTime()));
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Ошибка выполнения запроса: " + e.getMessage());
@@ -110,6 +136,7 @@ public class CarDiler extends Controller {
                         resultSet.getDate("date").toLocalDate(),
                         resultSet.getTime("time").toLocalTime());
             }
+
 
         } catch (Exception e) {
             System.out.println("Ошибка выполнения запроса: " + e.getMessage());
@@ -137,7 +164,6 @@ public class CarDiler extends Controller {
 
     @Override
     public void delete(int id) {
-
         final String sqlQuery = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
@@ -151,14 +177,14 @@ public class CarDiler extends Controller {
     }
 
     @Override
-    public List<Car> findAll() {
+    public Map<Integer, Car> findAll() {
         final String sqlQuery = "SELECT * FROM " + TABLE_NAME;
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sqlQuery);
-            List<Car> carList = new ArrayList<>();
+            Map<Integer, Car> carMap = new HashMap();
             while (resultSet.next()) {
-                carList.add(
+                carMap.put(resultSet.getInt("id"),
                         new Car(
                                 resultSet.getInt("hp"),
                                 resultSet.getString("number"),
@@ -167,11 +193,11 @@ public class CarDiler extends Controller {
                                 resultSet.getTime("time").toLocalTime())
                 );
             }
-            return carList;
+            return carMap;
         } catch (Exception e) {
             System.out.println("Ошибка выполнения запроса: " + e.getMessage());
         }
-        return new ArrayList<>();
+        return new HashMap<>();
     }
 
     @Override

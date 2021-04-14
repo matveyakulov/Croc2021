@@ -7,7 +7,9 @@ import com.github.matveyakulov.javaschool.homework7.model.Car;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Menu.
@@ -28,12 +30,13 @@ public class App {
 
         while (true) {
             System.out.println("Что вы хотите сделать?\n"
-                    + "1 - создать машину\n"
-                    + "2 - прочитать машину\n"
-                    + "3 - обновить данные существующей машины\n"
-                    + "4 - удалить машину\n"
-                    + "5 - вывести на экран все записи\n"
-                    + "6 - удалить все записи\n");
+                    + "1 - создать машину в конец таблицы\n"
+                    + "2 - создать машину в заданную строку\n"
+                    + "3 - прочитать машину\n"
+                    + "4 - обновить данные существующей машины\n"
+                    + "5 - удалить машину\n"
+                    + "6 - вывести на экран все записи\n"
+                    + "7 - удалить все записи\n");
 
             int choice = sc.nextInt();
 
@@ -54,13 +57,37 @@ public class App {
                     break;
                 }
                 case 2: {
-                    System.out.println("Введите id машины согласно таблице");
+                    System.out.println("Введите id строки");
                     int id = sc.nextInt();
-                    System.out.println("Найденная машина:\n");
-                    System.out.println(carDiler.read(id).toString());
+                    System.out.println("Введите количество лошадей");
+                    int hp = sc.nextInt();
+                    System.out.println("Введите номер машины");
+                    String number = sc.next();
+                    System.out.println("Введите true - машина в розыске, false - иначе");
+                    boolean wanted = sc.nextBoolean();
+                    System.out.println("Введите дату производства машины в формате: гггг-мм-дд");
+                    String date = sc.next();
+                    System.out.println("Введите время производства машины в формате: ч:м:с");
+                    String time = sc.next();
+
+                    carService.create(id, new Car(hp, number, wanted, date, time));
+                    System.out.println("Машина успешно добавлена!");
                     break;
                 }
                 case 3: {
+                    System.out.println("Введите id машины согласно таблице");
+                    int id = sc.nextInt();
+
+                    if(carDiler.read(id) != null) {
+                        System.out.println("Найденная машина:\n");
+                        System.out.println(carDiler.read(id).toString());
+                    }
+                    else {
+                        System.out.println("Такой машины нет!");
+                    }
+                    break;
+                }
+                case 4: {
                     System.out.println("Введите id машины согласно таблице");
                     int id = sc.nextInt();
                     System.out.println("Введите количество лошадей");
@@ -77,20 +104,25 @@ public class App {
                     System.out.println("Данные успешно обновлены!");
                     break;
                 }
-                case 4: {
+                case 5: {
                     System.out.println("Введите id машины согласно таблице");
                     int id = sc.nextInt();
                     carService.delete(id);
                     System.out.println("Машина успешно удалена!");
                     break;
                 }
-                case 5: {
-                    List<Car> carList = carService.findAll();
-                    for (int i = 0; i < carList.size(); i++) {
-                        System.out.println(carList.get(i));
-                    }
-                }
                 case 6: {
+                    Map<Integer, Car> carList = carService.findAll();
+                    Set<Integer> keySet = carList.keySet();
+                    for (Integer key : keySet) {
+                        System.out.println(key + " " + carList.get(key));
+                    }
+                    if(carList.size() == 0){
+                        System.out.println("Таблица пуста!");
+                    }
+                    break;
+                }
+                case 7: {
                     carService.deleteAll();
                     System.out.println("Таблица очищена!");
                 }
@@ -99,7 +131,7 @@ public class App {
                 }
 
             }
-            if (!(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6)) {
+            if (!(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6 || choice == 7)) {
                 System.out.println("До свидания!");
                 break;
             }

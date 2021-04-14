@@ -3,6 +3,7 @@ package com.github.matveyakulov.javaschool.homework7.service;
 import com.github.matveyakulov.javaschool.homework7.model.Car;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Прикладной сервис.
@@ -25,6 +26,16 @@ public class CarService {
      */
     public void create(Car car) {
         carDiler.create(car);
+    }
+
+    /**
+     * Вставляет обьект в заданную строку.
+     *
+     * @param id номер строки.
+     * @param car обьект.
+     */
+    public void create(int id, Car car){
+        carDiler.create(id, car);
     }
 
     /**
@@ -68,7 +79,7 @@ public class CarService {
     /**
      * Полностью очищает таблицу.
      */
-    public List<Car> findAll() {
+    public Map<Integer, Car> findAll() {
         return carDiler.findAll();
     }
 }

@@ -2,8 +2,7 @@ package com.github.matveyakulov.javaschool.homework7.database.model;
 
 import com.github.matveyakulov.javaschool.homework7.model.Car;
 
-
-import java.util.List;
+import java.util.Map;
 
 /**
  * Класс, содержащий функциональность бд.
@@ -11,11 +10,19 @@ import java.util.List;
 public abstract class Controller {
 
     /**
-     * Добавляет обьект в таблицу.
+     * Добавляет обьект в конец таблицы.
      *
      * @param car обьект.
      */
     public abstract void create(Car car);
+
+    /**
+     * Вставляет обьект в заданную строку.
+     *
+     * @param id номер строки.
+     * @param car обьект.
+     */
+    public abstract void create(int id, Car car);
 
     /**
      * Читает обьект из таблицы.
@@ -45,7 +52,7 @@ public abstract class Controller {
      *
      * @return все обьекты из таблицы.
      */
-    public abstract List<Car> findAll();
+    public abstract Map<Integer, Car> findAll();
 
     /**
      * Полностью очищает таблицу.
