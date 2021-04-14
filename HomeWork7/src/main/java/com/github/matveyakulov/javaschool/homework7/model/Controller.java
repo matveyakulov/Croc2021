@@ -1,4 +1,4 @@
-package com.github.matveyakulov.javaschool.homework7.database.model;
+package com.github.matveyakulov.javaschool.homework7.model;
 
 import com.github.matveyakulov.javaschool.homework7.model.Car;
 

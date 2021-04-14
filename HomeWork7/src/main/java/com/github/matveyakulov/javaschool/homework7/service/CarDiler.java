@@ -1,7 +1,7 @@
 package com.github.matveyakulov.javaschool.homework7.service;
 
 import com.github.matveyakulov.javaschool.homework7.model.Car;
-import com.github.matveyakulov.javaschool.homework7.database.model.Controller;
+import com.github.matveyakulov.javaschool.homework7.model.Controller;
 
 import org.apache.derby.jdbc.EmbeddedDataSource;
 
