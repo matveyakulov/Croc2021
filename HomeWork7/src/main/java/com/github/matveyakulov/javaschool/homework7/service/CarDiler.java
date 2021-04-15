@@ -48,7 +48,6 @@ public class CarDiler extends Controller {
         if (id == 0) {
             id = 1;
         }
-        System.out.println(id);
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             DatabaseMetaData databaseMetadata = connection.getMetaData();
