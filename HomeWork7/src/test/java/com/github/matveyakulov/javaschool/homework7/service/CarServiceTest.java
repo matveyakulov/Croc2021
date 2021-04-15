@@ -46,7 +46,7 @@ public class CarServiceTest extends TestCase {
      * @throws IOException
      */
     public void setUp() throws IOException {
-        dataSourceProvider = new DataSourceProvider();
+        dataSourceProvider = new DataSourceProvider("test.properties");
         carDiler = new CarDiler(dataSourceProvider.getDataSource());
         car = new Car(612, "A666АА23", false, "2020-10-22", "12:00:00");
         car1 = new Car(12, "A666АА23", false, "2010-10-02", "23:00:03");
@@ -78,8 +78,8 @@ public class CarServiceTest extends TestCase {
      */
     public void testCreate2Param() {
         carService.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
-        carService.create(2,car1);
-        carService.create(1,car);
+        carService.create(2, car1);
+        carService.create(1, car);
         Map<Integer, Car> carList = carService.findAll();
         Set<Integer> keySet = carList.keySet();
         System.out.println("You have:");

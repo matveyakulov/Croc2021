@@ -20,7 +20,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         // data source
-        DataSourceProvider dataSourceProvider = new DataSourceProvider();
+        DataSourceProvider dataSourceProvider = new DataSourceProvider("application.properties");
 
         // подключились к бд
         CarDiler carDiler = new CarDiler(dataSourceProvider.getDataSource());
@@ -78,11 +78,10 @@ public class App {
                     System.out.println("Введите id машины согласно таблице");
                     int id = sc.nextInt();
 
-                    if(carDiler.read(id) != null) {
+                    if (carDiler.read(id) != null) {
                         System.out.println("Найденная машина:\n");
                         System.out.println(carDiler.read(id).toString());
-                    }
-                    else {
+                    } else {
                         System.out.println("Такой машины нет!");
                     }
                     break;
@@ -117,7 +116,7 @@ public class App {
                     for (Integer key : keySet) {
                         System.out.println(key + " " + carList.get(key));
                     }
-                    if(carList.size() == 0){
+                    if (carList.size() == 0) {
                         System.out.println("Таблица пуста!");
                     }
                     break;

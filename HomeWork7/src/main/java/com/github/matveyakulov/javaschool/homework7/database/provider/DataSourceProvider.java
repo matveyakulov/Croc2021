@@ -22,20 +22,22 @@ public class DataSourceProvider {
      */
     private Map<String, String> properties = new HashMap<>();
 
-    public DataSourceProvider() throws IOException {
-        loadProperties();
+    public DataSourceProvider(String name) throws IOException {
+        loadProperties(name);
     }
+
 
     /**
      * Загружает данные бд.
      *
+     * @param name имя файла настроек.
      * @throws IOException
      */
-    private void loadProperties() throws IOException {
+    private void loadProperties(String name) throws IOException {
         Properties properties = new Properties();
         try {
             properties.load(
-                    Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
+                    Thread.currentThread().getContextClassLoader().getResourceAsStream(name));
             for (Map.Entry<Object, Object> entry : properties.entrySet()) {
                 this.properties.put((String) entry.getKey(), (String) entry.getValue());
             }
