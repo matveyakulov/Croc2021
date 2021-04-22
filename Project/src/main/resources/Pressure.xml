@@ -1,0 +1,27 @@
+<weathers>
+	<weather>
+		<city>Krasnodar</city>
+		<datetime>2021-02-12T21:00</datetime>
+		<pressure>20</pressure>
+	</weather>
+	<weather>
+		<city>Krasnodar</city>
+		<datetime>2021-02-13T22:00</datetime>
+		<pressure>22</pressure>
+	</weather>
+	<weather>
+		<city>LA</city>
+		<datetime>2021-02-12T21:00</datetime>
+		<pressure>20</pressure>
+	</weather>
+	<weather>
+		<city>Cali</city>
+		<datetime>2021-02-15T12:00</datetime>
+		<pressure>20</pressure>
+	</weather>
+	<weather>
+		<city>Cali</city>
+		<datetime>2021-02-13T20:00</datetime>
+		<pressure>22</pressure>
+	</weather>
+</weathers>

@@ -1,0 +1,12 @@
+<weathers>
+    <weather>
+        <city>Krasnodar</city>
+        <date>2021-02-12T20:00</date>
+        <pressure>20</pressure>
+        </weather>
+    <weather>
+        <city>Krasnodar</city>
+        <date>2021-02-13T20:00</date>
+        <pressure>22</pressure>
+    </weather>
+</weathers>
