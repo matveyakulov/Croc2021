@@ -7,25 +7,25 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Погода с полем температуры.
+ * РџРѕРіРѕРґР° СЃ РїРѕР»РµРј С‚РµРјРїРµСЂР°С‚СѓСЂС‹.
  */
 @XmlRootElement(name = "weather")
 public class WeatherTemp {
 
     /**
-     * Город.
+     * Р“РѕСЂРѕРґ.
      */
     @XmlElement
     private String city;
 
     /**
-     * Дата и время.
+     * Р”Р°С‚Р° Рё РІСЂРµРјСЏ.
      */
     @XmlElement(name = "datetime")
     private Timestamp dateTime;
 
     /**
-     * Температура.
+     * РўРµРјРїРµСЂР°С‚СѓСЂР°.
      */
     @XmlElement
     private double temperature;

@@ -13,27 +13,27 @@ import com.github.matveyakulov.javaschool.project.model.Weathers;
 import java.io.IOException;
 
 /**
- * Преобразует xml.
+ * РџСЂРµРѕР±СЂР°Р·СѓРµС‚ xml.
  */
 public class XmlConverter {
 
     /**
-     * Создаём настроенный mapper JAXB.
+     * РЎРѕР·РґР°С‘Рј РЅР°СЃС‚СЂРѕРµРЅРЅС‹Р№ mapper JAXB.
      *
      * @return mapper
      */
     private static XmlMapper createXmlMapper() {
         final XmlMapper mapper = new XmlMapper();
-        mapper.registerModule(new JaxbAnnotationModule()); // модуль jaxb
-        mapper.enable(SerializationFeature.INDENT_OUTPUT); // форматирование вывода
+        mapper.registerModule(new JaxbAnnotationModule()); // РјРѕРґСѓР»СЊ jaxb
+        mapper.enable(SerializationFeature.INDENT_OUTPUT); // С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґР°
         return mapper;
     }
 
     /**
-     * Десериализация из xml.
+     * Р”РµСЃРµСЂРёР°Р»РёР·Р°С†РёСЏ РёР· xml.
      *
      * @param xml xml.
-     * @return объект Weathers.
+     * @return РѕР±СЉРµРєС‚ Weathers.
      */
     public static Weathers fromXml(String xml) throws IOException {
         return createXmlMapper().readValue(xml, Weathers.class);

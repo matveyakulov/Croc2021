@@ -18,12 +18,12 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * Тесты класса WeatherService.
+ * пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ WeatherService.
  */
 public class WeatherServiceTest extends TestCase {
 
     /**
-     * Прикладной сервис.
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     WeatherService weatherService;
 
@@ -33,21 +33,21 @@ public class WeatherServiceTest extends TestCase {
     DataSourceProvider dataSource;
 
     /**
-     * Список погод с температурой.
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     Weathers<WeatherTemp> weathersTemp;
 
     /**
-     * Список погод с давлением.
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     Weathers<WeatherPres> weathersPres;
     /**
-     * Связь с бд.
+     * пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ.
      */
     SqlService service;
 
     /**
-     * Начальная сборка.
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
      *
      * @throws IOException
      */
@@ -72,7 +72,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода insert для обьекта WeatherTemp.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ insert пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ WeatherTemp.
      *
      * @throws SQLException
      */
@@ -87,7 +87,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода insert для обьекта WeatherPres.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ insert пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ WeatherPres.
      *
      * @throws SQLException
      */
@@ -102,7 +102,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода deleteAll.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ deleteAll.
      *
      * @throws SQLException
      */
@@ -118,7 +118,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода sort.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ sort.
      *
      * @throws SQLException
      */

@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Мгожество погод.
+ * РњРіРѕР¶РµСЃС‚РІРѕ РїРѕРіРѕРґ.
  *
- * @param <T> тип погоды.
+ * @param <T> С‚РёРї РїРѕРіРѕРґС‹.
  */
 @XmlRootElement(name = "weathers")
 public class Weathers<T> {
 
     /**
-     * Список погод.
+     * РЎРїРёСЃРѕРє РїРѕРіРѕРґ.
      */
     @JacksonXmlElementWrapper(useWrapping = false)
     @XmlElement(name = "weather")

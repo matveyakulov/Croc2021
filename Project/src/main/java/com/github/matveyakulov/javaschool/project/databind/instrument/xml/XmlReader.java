@@ -5,15 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Класс для чтения текста из файла.
+ * РљР»Р°СЃСЃ РґР»СЏ С‡С‚РµРЅРёСЏ С‚РµРєСЃС‚Р° РёР· С„Р°Р№Р»Р°.
  */
 public class XmlReader {
 
     /**
-     * Читает файл и возвращает строку с его содержимым.
+     * Р§РёС‚Р°РµС‚ С„Р°Р№Р» Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ СЃ РµРіРѕ СЃРѕРґРµСЂР¶РёРјС‹Рј.
      *
-     * @param filePath путь к файлу.
-     * @return строка.
+     * @param filePath РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ.
+     * @return СЃС‚СЂРѕРєР°.
      * @throws IOException
      */
     public static String readFile(String filePath) throws IOException {

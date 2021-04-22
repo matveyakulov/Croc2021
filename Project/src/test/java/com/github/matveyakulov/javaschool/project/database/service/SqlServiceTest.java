@@ -26,21 +26,21 @@ public class SqlServiceTest extends TestCase {
     DataSourceProvider dataSource;
 
     /**
-     * Список погод с температурой.
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     Weathers<WeatherTemp> weathersTemp;
 
     /**
-     * Список погод с давлением.
+     * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     Weathers<WeatherPres> weathersPres;
     /**
-     * Связь с бд.
+     * пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ.
      */
     SqlService service;
 
     /**
-     * Начальная сборка.
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
      *
      * @throws IOException
      */
@@ -64,7 +64,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода insert для обьекта WeatherTemp.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ insert пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ WeatherTemp.
      *
      * @throws SQLException
      */
@@ -79,7 +79,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода insert для обьекта WeatherPres.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ insert пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ WeatherPres.
      *
      * @throws SQLException
      */
@@ -94,7 +94,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода deleteAll.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ deleteAll.
      *
      * @throws SQLException
      */
@@ -110,7 +110,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода exist.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ exist.
      *
      * @throws SQLException
      */
@@ -128,7 +128,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода select.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ select.
      *
      * @throws SQLException
      */
@@ -145,7 +145,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода update температуры.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ update пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      *
      * @throws SQLException
      */
@@ -160,7 +160,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода update давления.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ update пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      *
      * @throws SQLException
      */
@@ -175,7 +175,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода sort.
+     * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ sort.
      *
      * @throws SQLException
      */

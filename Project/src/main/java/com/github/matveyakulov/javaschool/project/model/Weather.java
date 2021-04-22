@@ -4,27 +4,27 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
- * Погода.
+ * РџРѕРіРѕРґР°.
  */
 public class Weather {
 
     /**
-     * Город.
+     * Р“РѕСЂРѕРґ.
      */
     private String city;
 
     /**
-     * Дата и время.
+     * Р”Р°С‚Р° Рё РІСЂРµРјСЏ.
      */
     private Timestamp dateTime;
 
     /**
-     * Температура.
+     * РўРµРјРїРµСЂР°С‚СѓСЂР°.
      */
     private double temperature;
 
     /**
-     * Давление.
+     * Р”Р°РІР»РµРЅРёРµ.
      */
     private double pressure;
 

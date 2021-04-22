@@ -18,12 +18,12 @@ import java.sql.SQLException;
 import java.util.Map;
 
 /**
- * Тест выполнения программы.
+ * пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
  */
 public class DemoTest extends TestCase {
 
     /**
-     * Демонстрация работы программы.
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      */
     public void testDemo() throws IOException, SQLException {
 
@@ -49,7 +49,7 @@ public class DemoTest extends TestCase {
             weatherService.insert(presWeathers.get(i));
         }
         weatherService.sort();
-        // результат работы программы
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Map<Integer, Weather> weatherMap = weatherService.selectAll();
         for (Integer key : weatherMap.keySet()) {
             System.out.println(key + " " + weatherMap.get(key));
