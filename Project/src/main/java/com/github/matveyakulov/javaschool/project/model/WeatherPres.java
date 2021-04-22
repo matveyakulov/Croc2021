@@ -30,7 +30,7 @@ public class WeatherPres {
     @XmlElement
     private double pressure;
 
-    public WeatherPres() {
+    private WeatherPres() {
     }
 
     public WeatherPres(String city, Timestamp dateTime, double pressure) {

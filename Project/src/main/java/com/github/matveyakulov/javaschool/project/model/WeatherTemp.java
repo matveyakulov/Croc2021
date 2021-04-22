@@ -30,7 +30,7 @@ public class WeatherTemp {
     @XmlElement
     private double temperature;
 
-    public WeatherTemp() {
+    private WeatherTemp() {
     }
 
     public WeatherTemp(String city, Timestamp date, double temperature) {
