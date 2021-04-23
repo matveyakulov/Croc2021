@@ -39,8 +39,6 @@ public class SqlService {
             ResultSet resultSet = databaseMetadata.getTables(
                     null,
                     null,
-                    // �������� �� ��, ��� �� ������� ������� � ������ �������� (� ������ � ��� ��� �� ����������),
-                    // ����� �� ������������ � �������. ����� ��� �������
                     TABLE_NAME.toUpperCase(),
                     new String[]{"TABLE"});
             if (!resultSet.next()) {
@@ -81,7 +79,7 @@ public class SqlService {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("������ ���������� �������: " + e.getMessage());
+            System.out.println(e.getMessage());
             throw e;
         }
 
@@ -105,7 +103,7 @@ public class SqlService {
             statement.setDouble(3, weather.getPressure());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("������ ���������� �������: " + e.getMessage());
+            System.out.println(e.getMessage());
             throw e;
         }
 
@@ -130,7 +128,7 @@ public class SqlService {
             statement.setDouble(4, weather.getPressure());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("������ ���������� �������: " + e.getMessage());
+            System.out.println(e.getMessage());
             throw e;
         }
 
@@ -158,7 +156,7 @@ public class SqlService {
             }
             return weatherMap;
         } catch (Exception e) {
-            System.out.println("������ ���������� �������: " + e.getMessage());
+            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -174,7 +172,7 @@ public class SqlService {
             statement.execute(sqlQuery);
             initTable();
         } catch (SQLException e) {
-            System.out.println("������ ���������� �������: " + e.getMessage());
+            System.out.println(e.getMessage());
             throw e;
         }
 
