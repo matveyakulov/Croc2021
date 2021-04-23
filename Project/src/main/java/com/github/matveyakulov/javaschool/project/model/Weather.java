@@ -1,7 +1,6 @@
 package com.github.matveyakulov.javaschool.project.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 /**
  * Погода.

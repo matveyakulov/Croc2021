@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import java.io.IOException;
 
 /**
- * ����� ������ Reader.
+ * Тест класса Reader.
  */
 public class XmlReaderTest extends TestCase {
 
     /**
-     * ���� ������ readFile.
+     * Тест метода readFile.
      *
      * @throws IOException
      */

@@ -18,12 +18,12 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * ����� ������ WeatherService.
+ * Тесты класса WeatherService.
  */
 public class WeatherServiceTest extends TestCase {
 
     /**
-     * ���������� ������.
+     * Прикладной сервис.
      */
     WeatherService weatherService;
 
@@ -33,21 +33,21 @@ public class WeatherServiceTest extends TestCase {
     DataSourceProvider dataSource;
 
     /**
-     * ������ ����� � ������������.
+     * Список погоды с температурой.
      */
     Weathers<WeatherTemp> weathersTemp;
 
     /**
-     * ������ ����� � ���������.
+     * Список погоды с давлением.
      */
     Weathers<WeatherPres> weathersPres;
     /**
-     * ����� � ��.
+     * Связь  с бд.
      */
     SqlService service;
 
     /**
-     * ��������� ������.
+     * Начальная сборка.
      *
      * @throws IOException
      */
@@ -72,7 +72,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ insert ��� ������� WeatherTemp.
+     * Тест метода insert для обьекта WeatherTemp.
      *
      * @throws SQLException
      */
@@ -87,7 +87,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ insert ��� ������� WeatherPres.
+     * Тест метода insert для обьекта WeatherPres.
      *
      * @throws SQLException
      */
@@ -102,7 +102,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ deleteAll.
+     * Тест метода deleteAll.
      *
      * @throws SQLException
      */
@@ -118,7 +118,7 @@ public class WeatherServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ sort.
+     * Тест метода sort.
      *
      * @throws SQLException
      */

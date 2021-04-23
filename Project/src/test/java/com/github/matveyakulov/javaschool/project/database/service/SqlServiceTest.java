@@ -18,6 +18,9 @@ import java.util.Arrays;
 import java.util.Map;
 
 
+/**
+ * Тесты класса SqlService.
+ */
 public class SqlServiceTest extends TestCase {
 
     /**
@@ -26,21 +29,21 @@ public class SqlServiceTest extends TestCase {
     DataSourceProvider dataSource;
 
     /**
-     * ������ ����� � ������������.
+     * Список погоды с температурой.
      */
     Weathers<WeatherTemp> weathersTemp;
 
     /**
-     * ������ ����� � ���������.
+     * Список погоды с давлением.
      */
     Weathers<WeatherPres> weathersPres;
     /**
-     * ����� � ��.
+     * Связь с бд.
      */
     SqlService service;
 
     /**
-     * ��������� ������.
+     * Начальная сборка.
      *
      * @throws IOException
      */
@@ -64,7 +67,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ insert ��� ������� WeatherTemp.
+     * Тест метода insert для обьекта WeatherTemp.
      *
      * @throws SQLException
      */
@@ -79,7 +82,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ insert ��� ������� WeatherPres.
+     * Тест метода insert для обьекта WeatherPres.
      *
      * @throws SQLException
      */
@@ -94,7 +97,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ deleteAll.
+     * Тест метода deleteAll.
      *
      * @throws SQLException
      */
@@ -110,7 +113,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ exist.
+     * Тест метода exist.
      *
      * @throws SQLException
      */
@@ -128,7 +131,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ select.
+     * Тест метода select.
      *
      * @throws SQLException
      */
@@ -145,7 +148,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ update �����������.
+     * Тест метода update температуры.
      *
      * @throws SQLException
      */
@@ -160,7 +163,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ update ��������.
+     * Тест метода update давления.
      *
      * @throws SQLException
      */
@@ -175,7 +178,7 @@ public class SqlServiceTest extends TestCase {
     }
 
     /**
-     * ���� ������ sort.
+     * Тест метода sort.
      *
      * @throws SQLException
      */

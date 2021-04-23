@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Assertions;
 import java.io.IOException;
 
 /**
- * ����� ������ DataSourceProvider.
+ * Тесты класса DataSourceProvider.
  */
 public class DataSourceProviderTest extends TestCase {
 
     /**
-     * ��������� ������.
+     * Data source.
      */
     DataSourceProvider dataSourceProvider;
 
     /**
-     * ��������� ������.
+     * Начальная сборка.
      *
      * @throws IOException
      */
@@ -25,7 +25,7 @@ public class DataSourceProviderTest extends TestCase {
     }
 
     /**
-     * ���� ������ getSource.
+     * Тест метода getSource.
      */
     public void testGetSource() {
 

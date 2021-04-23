@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 /**
- * ����� ������ XmlConverter.
+ * Тесты для класса XmlConverter.
  */
 public class XmlConverterTest extends TestCase {
 
     /**
-     * ���� ������ fromXml ��� ����� Weathers<WeatherTemp>.
+     * Тест метода fromXml для списка Weathers<WeatherTemp>.
      *
      * @throws IOException
      */
@@ -42,7 +42,7 @@ public class XmlConverterTest extends TestCase {
     }
 
     /**
-     * ���� ������ fromXml ��� ����� Weathers<WeatherPres>.
+     * Тест метода fromXml для списка Weathers<WeatherPres>.
      *
      * @throws IOException
      */

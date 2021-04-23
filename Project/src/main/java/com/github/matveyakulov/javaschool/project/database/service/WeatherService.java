@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.Map;
 
 /**
- * Прикладной сервис.
+ * РџСЂРёРєР»Р°РґРЅРѕР№ СЃРµСЂРІРёСЃ.
  */
 public class WeatherService {
 
     /**
-     * Экземпляр соединения с бд.
+     * РЎРІСЏР·СЊ СЃ Р±Рґ.
      */
     SqlService service;
 
@@ -22,9 +22,9 @@ public class WeatherService {
     }
 
     /**
-     * Вставляет обьект WeatherTemp в бд.
+     * Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЊРµРєС‚ WeatherTemp РІ Р±Рґ.
      *
-     * @param weather обьект.
+     * @param weather РѕР±СЊРµРєС‚.
      * @throws SQLException
      */
     public void insert(WeatherTemp weather) throws SQLException {
@@ -36,9 +36,9 @@ public class WeatherService {
     }
 
     /**
-     * Вставляет обьект WeatherPres в бд.
+     * Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЊРµРєС‚ WeatherPres РІ Р±Рґ.
      *
-     * @param weather обьект.
+     * @param weather РѕР±СЊРµРєС‚.
      * @throws SQLException
      */
     public void insert(WeatherPres weather) throws SQLException {
@@ -51,24 +51,26 @@ public class WeatherService {
 
     }
 
+
     /**
-     * Возвращает все элементы таблицы.
+     * Р’С‹Р±РёСЂР°РµС‚ РІСЃРµ РѕР±СЊРµРєС‚С‹ РёР· Р±Рґ.
      *
-     * @return все элементы таблицы.
+     * @return РѕР±СЊРµРєС‚С‹
+     * @throws SQLException
      */
     public Map<Integer, Weather> selectAll() throws SQLException {
         return service.selectAll();
     }
 
     /**
-     * Очищает и пересоздает таблицу.
+     * РћС‡РёС‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ.
      */
     public void deleteAll() throws SQLException {
         service.deleteAll();
     }
 
     /**
-     * Сортировка по городу, а потом по дате и времени.
+     * РЎРѕСЂС‚РёСЂСѓРµС‚ Р·Р°РїРёСЃРё Р±Рґ РїРѕ РіРѕСЂРѕРґСѓ, Р° РїРѕС‚РѕРј РїРѕ РґР°С‚Рµ Рё РІСЂРµРјРµРЅРё.
      *
      * @throws SQLException
      */

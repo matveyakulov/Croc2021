@@ -10,12 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Запросы к бд.
+ * Р—Р°РїСЂРѕСЃС‹ Рє Р±Рґ.
  */
 public class SqlService {
 
     /**
-     * Название таблицы.
+     * РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹.
      */
     private final String TABLE_NAME = "weather";
 
@@ -30,7 +30,7 @@ public class SqlService {
     }
 
     /**
-     * Создание таблицы, если ее нет.
+     * РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹, РµСЃР»Рё РЅРµС‚.
      */
     private void initTable() {
         try (Connection connection = dataSource.getConnection();
@@ -39,8 +39,8 @@ public class SqlService {
             ResultSet resultSet = databaseMetadata.getTables(
                     null,
                     null,
-                    // Несмотря на то, что мы создаем таблицу в нижнем регистре (и дальше к ней так же обращаемся),
-                    // поиск мы осуществляем в верхнем. Такие вот приколы
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ),
+                    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     TABLE_NAME.toUpperCase(),
                     new String[]{"TABLE"});
             if (!resultSet.next()) {
@@ -63,9 +63,9 @@ public class SqlService {
     }
 
     /**
-     * Вставляет обьект WeatherTemp.
+     * Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЊРµРєС‚ WeatherTemp РІ Р±Рґ.
      *
-     * @param weather обьект WeatherTemp.
+     * @param weather РѕР±СЊРµРєС‚ WeatherTemp.
      */
     public void insert(WeatherTemp weather) throws SQLException {
 
@@ -81,16 +81,16 @@ public class SqlService {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + e.getMessage());
             throw e;
         }
 
     }
 
     /**
-     * Вставляет обьект WeatherPres.
+     * Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЊРµРєС‚ WeatherPres РІ Р±Рґ.
      *
-     * @param weather обьект WeatherPres.
+     * @param weather РѕР±СЊРµРєС‚ WeatherPres.
      */
     public void insert(WeatherPres weather) throws SQLException {
 
@@ -105,16 +105,16 @@ public class SqlService {
             statement.setDouble(3, weather.getPressure());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + e.getMessage());
             throw e;
         }
 
     }
 
     /**
-     * Вставляет обьект Weather.
+     * Р’СЃС‚Р°РІР»СЏРµС‚ РѕР±СЊРµРєС‚ WeatherPres РІ Р±Рґ.
      *
-     * @param weather обьект Weather.
+     * @param weather РѕР±СЊРµРєС‚ Weather.
      */
     private void insert(Weather weather) throws SQLException {
 
@@ -130,16 +130,16 @@ public class SqlService {
             statement.setDouble(4, weather.getPressure());
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + e.getMessage());
             throw e;
         }
 
     }
 
     /**
-     * Возвращает все элементы таблицы.
+     * Р’С‹Р±РёСЂР°РµС‚ РІСЃРµ РѕР±СЊРµРєС‚С‹ РёР· Р±Рґ.
      *
-     * @return все элементы таблицы.
+     * @return РѕР±СЊРµРєС‚С‹.
      */
     public HashMap<Integer, Weather> selectAll() throws SQLException {
         final String sqlQuery = "SELECT * FROM " + TABLE_NAME;
@@ -158,23 +158,23 @@ public class SqlService {
             }
             return weatherMap;
         } catch (Exception e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + e.getMessage());
             throw e;
         }
     }
 
     /**
-     * Очищает и пересоздает таблицу.
+     * РћС‡РёС‰Р°РµС‚ С‚Р°Р±Р»РёС†Сѓ.
      */
     public void deleteAll() throws SQLException {
-        final String sqlQuery = "DROP TABLE " + TABLE_NAME; // чтобы инкремент с 1 начинался
+        final String sqlQuery = "DROP TABLE " + TABLE_NAME; // С‡С‚РѕР±С‹ РёРЅРєСЂРµРјРµРЅС‚ СЃ 1 РЅР°С‡РёРЅР°Р»СЃСЏ
 
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.execute(sqlQuery);
             initTable();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + e.getMessage());
             throw e;
         }
 
@@ -182,11 +182,11 @@ public class SqlService {
     }
 
     /**
-     * Проверяет существование обьекта с заданными параметрами.
+     * РџСЂРѕРІРµСЂСЏРµС‚, РµСЃС‚СЊ Р»Рё РІ С‚Р°Р±Р»РёС†Рµ РѕР±СЊРµРєС‚ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РіРѕСЂРѕРґРѕРј Рё РґР°С‚РѕР№ РёР· РїСЂРѕРјРµР¶СѓС‚РєР°.
      *
-     * @param city     город.
-     * @param dateTime дата и время.
-     * @return 0 - ничего не найдено, 1 - иначе.
+     * @param city РіРѕСЂРѕРґ.
+     * @param dateTime РґР°С‚Р° Рё РІСЂРµРјСЏ.
+     * @return 0 - РЅРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ, 1 - РёРЅР°С‡Рµ.
      * @throws SQLException
      */
     public boolean exist(String city, Timestamp dateTime) throws SQLException {
@@ -210,11 +210,11 @@ public class SqlService {
     }
 
     /**
-     * Возвращает обьекты с указанными параметрами.
+     * Р’С‹Р±РёСЂР°РµС‚ РѕР±СЊРµРєС‚С‹ СЃ Р·Р°РґР°РЅРЅС‹Рј РіРѕСЂРѕРґРѕРј Рё РІСЂРµРјРµРЅРµРј РёР· РїСЂРѕРјРµР¶СѓС‚РєР°.
      *
-     * @param city     город.
-     * @param dateTime дата и время.
-     * @return обьекты.
+     * @param city  РіРѕСЂРѕРґ.
+     * @param dateTime РґР°С‚Р° Рё РІСЂРµРјСЏ.
+     * @return РѕР±СЊРµРєС‚С‹.
      * @throws SQLException
      */
     public Map<Integer, Weather> select(String city, Timestamp dateTime) throws SQLException {
@@ -244,9 +244,9 @@ public class SqlService {
     }
 
     /**
-     * Обновляет температуру в записях со схожей датой.
+     * РћР±РЅРѕРІР»СЏРµС‚ РІСЂРµРјСЏ Рё С‚РµРјРїРµСЂР°С‚СѓСЂСѓ Сѓ РѕР±СЊРµРєС‚Р°.
      *
-     * @param weather обьект.
+     * @param weather РѕР±СЊРµРєС‚.
      * @throws SQLException
      */
     public void update(WeatherTemp weather) throws SQLException {
@@ -272,9 +272,9 @@ public class SqlService {
     }
 
     /**
-     * Обновляет давление в записях со схожей датой.
+     * РћР±РЅРѕРІР»СЏРµС‚ РІСЂРµРјСЏ Рё РґР°РІР»РµРЅРёРµ Сѓ РѕР±СЊРµРєС‚Р°.
      *
-     * @param weather обьект.
+     * @param weather РѕР±СЊРµРєС‚.
      * @throws SQLException
      */
     public void update(WeatherPres weather) throws SQLException {
@@ -298,7 +298,7 @@ public class SqlService {
     }
 
     /**
-     * Сортировка по городу, а потом по дате и времени.
+     * РЎРѕСЂС‚РёСЂСѓРµС‚ Р·Р°РїРёСЃРё Р±Рґ РїРѕ РіРѕСЂРѕРґСѓ, Р° РїРѕС‚РѕРј РїРѕ РґР°С‚Рµ Рё РІСЂРµРјРµРЅРё.
      *
      * @throws SQLException
      */

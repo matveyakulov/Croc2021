@@ -18,12 +18,12 @@ import java.sql.SQLException;
 import java.util.Map;
 
 /**
- * ���� ���������� ���������.
+ * Демосценарий работы программы.
  */
 public class DemoTest extends TestCase {
 
     /**
-     * ������������ ������ ���������.
+     * Демосценарий работы программы.
      */
     public void testDemo() throws IOException, SQLException {
 
@@ -49,7 +49,7 @@ public class DemoTest extends TestCase {
             weatherService.insert(presWeathers.get(i));
         }
         weatherService.sort();
-        // ��������� ������ ���������
+        // вывод на экран
         Map<Integer, Weather> weatherMap = weatherService.selectAll();
         for (Integer key : weatherMap.keySet()) {
             System.out.println(key + " " + weatherMap.get(key));
