@@ -5,32 +5,32 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 /**
- * Машина.
+ * РњР°С€РёРЅР°.
  */
 public class Car {
 
     /**
-     * Количество лошадей.
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ Р»РѕС€Р°РґРµР№.
      */
     private int hp;
 
     /**
-     * Гос номер.
+     * Р“РѕСЃ РЅРѕРјРµСЂ.
      */
     private String number;
 
     /**
-     * В розыске( false - нет, true - да).
+     * Р’ СЂРѕР·С‹СЃРєРµ( false - РЅРµС‚, true - РґР°).
      */
     private boolean wanted;
 
     /**
-     * Дата производства.
+     * Р”Р°С‚Р° РїСЂРѕРёР·РІРѕРґСЃС‚РІР°.
      */
     private final LocalDate date;
 
     /**
-     * Время производства.
+     * Р’СЂРµРјСЏ РїСЂРѕРёР·РІРѕРґСЃС‚РІР°.
      */
     private final LocalTime time;
 
@@ -98,7 +98,8 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return hp == car.hp && wanted == car.wanted && Objects.equals(number, car.number) && Objects.equals(date, car.date) && Objects.equals(time, car.time);
+        return hp == car.hp && wanted == car.wanted && Objects.equals(number, car.number)
+                && Objects.equals(date, car.date) && Objects.equals(time, car.time);
     }
 
     @Override

@@ -1,61 +1,59 @@
 package com.github.matveyakulov.javaschool.homework7.model;
 
-import com.github.matveyakulov.javaschool.homework7.model.Car;
-
 import java.util.Map;
 
 /**
- * Класс, содержащий функциональность бд.
+ * РћРїРёСЃС‹РІР°РµС‚ С„СѓРЅРєС†РёРѕРЅР°Р» Р·Р°РїСЂРѕСЃРѕРІ Рє Р±Рґ.
  */
 public abstract class Controller {
 
     /**
-     * Добавляет обьект в конец таблицы.
+     * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ.
      *
-     * @param car обьект.
+     * @param car РјР°С€РёРЅР°.
      */
     public abstract void create(Car car);
 
     /**
-     * Вставляет обьект в заданную строку.
+     * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ.
      *
-     * @param id номер строки.
-     * @param car обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @param car РјР°С€РёРЅР°.
      */
     public abstract void create(int id, Car car);
 
     /**
-     * Читает обьект из таблицы.
+     * Р§РёС‚Р°РµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
      *
-     * @param id номер строки.
-     * @return обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @return РјР°С€РёРЅР°.
      */
     public abstract Car read(int id);
 
     /**
-     * Обновляет строку новым обьектом.
+     * РћР±РЅРѕРІР»СЏРµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
      *
-     * @param id  номер строки.
-     * @param car обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @return РјР°С€РёРЅР°.
      */
     public abstract void update(int id, Car car);
 
     /**
-     * Удаляет обьект из таблицы.
+     * РћР±РЅРѕРІР»СЏРµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
      *
-     * @param id номер строки.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
      */
     public abstract void delete(int id);
 
     /**
-     * Возвращает коллекцию обьектов.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРѕ РІСЃРµРјРё СЌР»РµРјРµРЅС‚Р°РјРё.
      *
-     * @return все обьекты из таблицы.
+     * @return РІСЃРµ СЌР»РµРјРµРЅС‚С‹ С‚Р°Р±Р»РёС†С‹.
      */
     public abstract Map<Integer, Car> findAll();
 
     /**
-     * Полностью очищает таблицу.
+     * РЈРґР°Р»СЏРµС‚ РІСЃРµ Р·Р°РїРёСЃРё.
      */
     public abstract void deleteAll();
 

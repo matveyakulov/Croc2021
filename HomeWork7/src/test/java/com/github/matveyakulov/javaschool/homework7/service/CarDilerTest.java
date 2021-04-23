@@ -6,12 +6,11 @@ import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Класс тестов для CarDiler.
+ * РўРµСЃС‚С‹ РґР»СЏ РєР»Р°СЃСЃР° CarDiler.
  */
 public class CarDilerTest extends TestCase {
 
@@ -19,37 +18,40 @@ public class CarDilerTest extends TestCase {
      * Data Source.
      */
     private DataSourceProvider dataSourceProvider;
+
     /**
-     * Экземпляр класса CarDiler.
+     * Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° CarDiler.
      */
     private CarDiler carDiler;
+
     /**
-     * Машина.
+     * РњР°С€РёРЅР°.
      */
     private Car car;
+
     /**
-     * Машина.
+     * РњР°С€РёРЅР°.
      */
     private Car car1;
 
     /**
-     * Начальная сборка.
+     * РќР°С‡Р°Р»СЊРЅР°СЏ СЃР±РѕСЂРєР°.
      *
      * @throws IOException
      */
     public void setUp() throws IOException {
-        dataSourceProvider = new DataSourceProvider("test.properties");
+        dataSourceProvider = new DataSourceProvider("application.properties");
         carDiler = new CarDiler(dataSourceProvider.getDataSource());
-        car = new Car(612, "A666АА23", false, "2020-10-22", "12:00:00");
-        car1 = new Car(12, "A666АА23", false, "2010-10-02", "23:00:03");
+        car = new Car(612, "A666РђРђ23", false, "2020-10-22", "12:00:00");
+        car1 = new Car(12, "A666РђРђ23", false, "2010-10-02", "23:00:03");
 
     }
 
     /**
-     * Тест метода create с одним параметром.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° create СЃ РѕРґРЅРёРј РїР°СЂР°РјРµС‚СЂРѕРј.
      */
     public void testCreate1Param() {
-        carDiler.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
+        carDiler.deleteAll();    // РѕС‡РёС‰Р°СЋ, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РЅРµ Р·РЅР°СЋ, С‡С‚Рѕ С‚Р°Рј Р±С‹Р»Рѕ РґРѕ СЌС‚РѕРіРѕ
         carDiler.create(car1);
         carDiler.create(car);
         Map<Integer, Car> carList = carDiler.findAll();
@@ -63,10 +65,10 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода create с двумя параметрами.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° create СЃ РґРІСѓРјСЏ РїР°СЂР°РјРµС‚СЂР°РјРё.
      */
     public void testCreate2Param() {
-        carDiler.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
+        carDiler.deleteAll();
         carDiler.create(2, car1);
         carDiler.create(1, car);
         Map<Integer, Car> carList = carDiler.findAll();
@@ -80,7 +82,7 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода read.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° read.
      */
     public void testRead() {
         carDiler.deleteAll();
@@ -91,7 +93,7 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода delete.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° delete.
      */
     public void testDelete() {
         carDiler.deleteAll();
@@ -117,7 +119,7 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода update.
+     * РўРµСЃС‚ РјРµС‚РѕРґР°  update.
      */
     public void testUpdate() {
 
@@ -143,7 +145,7 @@ public class CarDilerTest extends TestCase {
     }
 
     /**
-     * Тест метода deleteAll.
+     * РўРµСЃС‚ РјРµС‚РѕРґР°  deleteAll.
      */
     public void testDeleteAll() {
         carDiler.deleteAll();

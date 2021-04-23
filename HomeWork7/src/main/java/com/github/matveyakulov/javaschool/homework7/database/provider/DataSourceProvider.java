@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Настройки для подключения.
+ * РќР°СЃС‚СЂРѕР№РєРё РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ.
  */
 public class DataSourceProvider {
 
@@ -18,7 +18,7 @@ public class DataSourceProvider {
     private EmbeddedDataSource dataSource;
 
     /**
-     * Параметры конфигурации.
+     * РџР°СЂР°РјРµС‚СЂС‹ РєРѕРЅС„РёРіСѓСЂР°С†РёРё.
      */
     private Map<String, String> properties = new HashMap<>();
 
@@ -28,9 +28,9 @@ public class DataSourceProvider {
 
 
     /**
-     * Загружает данные бд.
+     * Р—Р°РіСЂСѓР¶Р°РµС‚ РґР°РЅРЅС‹Рµ Р±Рґ.
      *
-     * @param name имя файла настроек.
+     * @param name РёРјСЏ С„Р°Р№Р»Р° РЅР°СЃС‚СЂРѕРµРє.
      * @throws IOException
      */
     private void loadProperties(String name) throws IOException {
@@ -48,9 +48,9 @@ public class DataSourceProvider {
     }
 
     /**
-     * Возвращает инфу о бд.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅС„Сѓ Рѕ Р±Рґ.
      *
-     * @return инфа о бд.
+     * @return РёРЅС„Р° Рѕ Р±Рґ.
      */
     public EmbeddedDataSource getDataSource() {
         if (dataSource == null) {

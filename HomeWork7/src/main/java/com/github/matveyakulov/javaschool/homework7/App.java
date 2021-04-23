@@ -6,7 +6,6 @@ import com.github.matveyakulov.javaschool.homework7.service.CarService;
 import com.github.matveyakulov.javaschool.homework7.model.Car;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -22,92 +21,92 @@ public class App {
         // data source
         DataSourceProvider dataSourceProvider = new DataSourceProvider("application.properties");
 
-        // подключились к бд
+        // Р—Р°РїСЂРѕСЃС‹ Рє Р±Рґ
         CarDiler carDiler = new CarDiler(dataSourceProvider.getDataSource());
 
-        // экземпляр прикладного сервиса
+        // РџСЂРёРєР»Р°РґРЅРѕР№ СЃРµСЂРІРёСЃ
         CarService carService = new CarService(carDiler);
 
         while (true) {
-            System.out.println("Что вы хотите сделать?\n"
-                    + "1 - создать машину в конец таблицы\n"
-                    + "2 - создать машину в заданную строку\n"
-                    + "3 - прочитать машину\n"
-                    + "4 - обновить данные существующей машины\n"
-                    + "5 - удалить машину\n"
-                    + "6 - вывести на экран все записи\n"
-                    + "7 - удалить все записи\n");
+            System.out.println("Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?\n"
+                    + "1 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ РєРѕРЅРµС†\n"
+                    + "2 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ РєРѕРЅРєСЂРµС‚РЅСѓСЋ СЃС‚СЂРѕРєСѓ\n"
+                    + "3 - РџСЂРѕС‡РёС‚Р°С‚СЊ Р·Р°РїРёСЃСЊ\n"
+                    + "4 - РћР±РЅРѕРІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰СѓСЋ Р·Р°РїРёСЃСЊ\n"
+                    + "5 - РЈРґР°Р»РёС‚СЊ Р·Р°РїРёСЃСЊ\n"
+                    + "6 - Р’С‹РІРµСЃС‚Рё РЅР° СЌРєСЂР°РЅ РІСЃРµ Р·Р°РїРёСЃРё\n"
+                    + "7 - РћС‡РёСЃС‚РёС‚СЊ С‚Р°Р±Р»РёС†Сѓ\n");
 
             int choice = sc.nextInt();
 
             switch (choice) {
                 case 1: {
-                    System.out.println("Введите количество лошадей");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»РѕС€Р°РґРµР№");
                     int hp = sc.nextInt();
-                    System.out.println("Введите номер машины");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РіРѕСЃ РЅРѕРјРµСЂ");
                     String number = sc.next();
-                    System.out.println("Введите true - машина в розыске, false - иначе");
+                    System.out.println("Р’РІРµРґРёС‚Рµ true - РјР°С€РёРЅР° РІ СЂРѕР·С‹СЃРєРµ, false - РёРЅР°С‡Рµ");
                     boolean wanted = sc.nextBoolean();
-                    System.out.println("Введите дату производства машины в формате: гг-мм-дд");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: РіРіРіРі-РјРј-РґРґ");
                     String date = sc.next();
-                    System.out.println("Введите время производства машины в формате: ч:м:с");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: С‡:Рј:СЃ");
                     String time = sc.next();
                     carService.create(new Car(hp, number, wanted, date, time));
-                    System.out.println("Машина успешно добавлена!");
+                    System.out.println("Р—Р°РїРёСЃСЊ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°!");
                     break;
                 }
                 case 2: {
-                    System.out.println("Введите id строки");
+                    System.out.println("Р’РІРµРґРёС‚Рµ id СЃС‚СЂРѕРєРё");
                     int id = sc.nextInt();
-                    System.out.println("Введите количество лошадей");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»РѕС€Р°РґРµР№");
                     int hp = sc.nextInt();
-                    System.out.println("Введите номер машины");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РіРѕСЃ РЅРѕРјРµСЂ");
                     String number = sc.next();
-                    System.out.println("Введите true - машина в розыске, false - иначе");
+                    System.out.println("Р’РІРµРґРёС‚Рµ true - РјР°С€РёРЅР° РІ СЂРѕР·С‹СЃРєРµ, false - РёРЅР°С‡Рµ");
                     boolean wanted = sc.nextBoolean();
-                    System.out.println("Введите дату производства машины в формате: гггг-мм-дд");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: РіРіРіРі-РјРј-РґРґ");
                     String date = sc.next();
-                    System.out.println("Введите время производства машины в формате: ч:м:с");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: С‡:Рј:СЃ");
                     String time = sc.next();
 
                     carService.create(id, new Car(hp, number, wanted, date, time));
-                    System.out.println("Машина успешно добавлена!");
+                    System.out.println("Р—Р°РїРёСЃСЊ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°!");
                     break;
                 }
                 case 3: {
-                    System.out.println("Введите id машины согласно таблице");
+                    System.out.println("Р’РІРµРґРёС‚Рµ id СЃС‚СЂРѕРєРё");
                     int id = sc.nextInt();
 
                     if (carDiler.read(id) != null) {
-                        System.out.println("Найденная машина:\n");
+                        System.out.println("РќР°Р№РґРµРЅРЅР°СЏ СЃС‚СЂРѕРєР°:\n");
                         System.out.println(carDiler.read(id).toString());
                     } else {
-                        System.out.println("Такой машины нет!");
+                        System.out.println("РўР°РєРѕР№ Р·Р°РїРёСЃРё РЅРµС‚!");
                     }
                     break;
                 }
                 case 4: {
-                    System.out.println("Введите id машины согласно таблице");
+                    System.out.println("Р’РІРµРґРёС‚Рµ id СЃС‚СЂРѕРєРё");
                     int id = sc.nextInt();
-                    System.out.println("Введите количество лошадей");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»РѕС€Р°РґРµР№");
                     int hp = sc.nextInt();
-                    System.out.println("Введите номер машины");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РіРѕСЃ РЅРѕРјРµСЂ");
                     String number = sc.next();
-                    System.out.println("Введите true - машина в розыске, false - иначе");
+                    System.out.println("Р’РІРµРґРёС‚Рµ true - РјР°С€РёРЅР° РІ СЂРѕР·С‹СЃРєРµ, false - РёРЅР°С‡Рµ");
                     boolean wanted = sc.nextBoolean();
-                    System.out.println("Введите дату производства машины в формате: гг-мм-дд");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: РіРіРіРі-РјРј-РґРґ");
                     String date = sc.next();
-                    System.out.println("Введите время производства машины в формате: ч:м:с");
+                    System.out.println("Р’РІРµРґРёС‚Рµ РІСЂРµРјСЏ РїСЂРѕРёР·РІРѕРґСЃС‚РІР° РІ С„РѕСЂРјР°С‚Рµ: С‡:Рј:СЃ");
                     String time = sc.next();
                     carService.update(id, new Car(hp, number, wanted, date, time));
-                    System.out.println("Данные успешно обновлены!");
+                    System.out.println("Р—Р°РїРёСЃСЊ РѕР±РЅРѕРІР»РµРЅР°!");
                     break;
                 }
                 case 5: {
-                    System.out.println("Введите id машины согласно таблице");
+                    System.out.println("Р’РІРµРґРёС‚Рµ id СЃС‚СЂРѕРєРё");
                     int id = sc.nextInt();
                     carService.delete(id);
-                    System.out.println("Машина успешно удалена!");
+                    System.out.println("Р—Р°РїРёСЃСЊ СѓРґР°Р»РµРЅР°!");
                     break;
                 }
                 case 6: {
@@ -117,21 +116,22 @@ public class App {
                         System.out.println(key + " " + carList.get(key));
                     }
                     if (carList.size() == 0) {
-                        System.out.println("Таблица пуста!");
+                        System.out.println("РўР°Р±Р»РёС†Р° РїСѓСЃС‚Р°!");
                     }
                     break;
                 }
                 case 7: {
                     carService.deleteAll();
-                    System.out.println("Таблица очищена!");
+                    System.out.println("РўР°Р±Р»РёС†Р° РѕС‡РёС‰РµРЅР°!");
                 }
                 default: {
                     break;
                 }
 
             }
-            if (!(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6 || choice == 7)) {
-                System.out.println("До свидания!");
+            if (!(choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5
+                    || choice == 6 || choice == 7)) {
+                System.out.println("Р”Рѕ СЃРІРёРґР°РЅРёСЏ!");
                 break;
             }
         }

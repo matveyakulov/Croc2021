@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Прикладной сервис.
+ * РџСЂРёРєР»Р°РґРЅРѕР№ СЃРµСЂРІРёСЃ.
  */
 public class CarService {
 
     /**
-     * Обьект бд.
+     * Р—Р°РїСЂРѕСЃС‹ Рє Р±Рґ.
      */
     private CarDiler carDiler;
 
@@ -20,64 +20,65 @@ public class CarService {
     }
 
     /**
-     * Добавляет обьект в таблицу.
+     * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ.
      *
-     * @param car обьект.
+     * @param car РјР°С€РёРЅР°.
      */
     public void create(Car car) {
         carDiler.create(car);
     }
 
     /**
-     * Вставляет обьект в заданную строку.
+     * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РёРЅРґРµРєСЃСѓ.
      *
-     * @param id номер строки.
-     * @param car обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @param car РјР°С€РёРЅР°.
      */
     public void create(int id, Car car){
         carDiler.create(id, car);
     }
 
     /**
-     * Читает обьект из таблицы.
+     * Р§РёС‚Р°РµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
      *
-     * @param id номер строки.
-     * @return обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @return РјР°С€РёРЅР°.
      */
     public Car read(int id) {
         return carDiler.read(id);
     }
 
     /**
-     * Обновляет строку новым обьектом.
+     * РћР±РЅРѕРІР»СЏРµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
+
      *
-     * @param id  номер строки.
-     * @param car обьект.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
+     * @return РјР°С€РёРЅР°.
      */
     public void update(int id, Car car) {
         carDiler.update(id, car);
     }
 
     /**
-     * Удаляет обьект из таблицы.
+     * РћР±РЅРѕРІР»СЏРµС‚ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
      *
-     * @param id номер строки.
+     * @param id РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё.
      */
     public void delete(int id) {
         carDiler.delete(id);
     }
 
     /**
-     * Возвращает коллекцию обьектов.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРѕ РІСЃРµРјРё СЌР»РµРјРµРЅС‚Р°РјРё.
      *
-     * @return все обьекты из таблицы.
+     * @return РІСЃРµ СЌР»РµРјРµРЅС‚С‹ С‚Р°Р±Р»РёС†С‹.
      */
     public void deleteAll() {
         carDiler.deleteAll();
     }
 
     /**
-     * Полностью очищает таблицу.
+     * РЈРґР°Р»СЏРµС‚ РІСЃРµ Р·Р°РїРёСЃРё.
      */
     public Map<Integer, Car> findAll() {
         return carDiler.findAll();

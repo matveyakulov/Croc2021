@@ -6,12 +6,11 @@ import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Тесты для класса CarService.
+ * РўРµСЃС‚С‹ РґР»СЏ РєР»Р°СЃСЃР° CarService.
  */
 public class CarServiceTest extends TestCase {
 
@@ -21,35 +20,35 @@ public class CarServiceTest extends TestCase {
     private DataSourceProvider dataSourceProvider;
 
     /**
-     * Экземпляр класса CarDiler.
+     * Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° CarDiler.
      */
     private CarDiler carDiler;
 
     /**
-     * Машина.
+     * РњР°С€РёРЅР°.
      */
     private Car car;
 
     /**
-     * Машина.
+     * РњР°С€РёРЅР°.
      */
     private Car car1;
 
     /**
-     * Экземпляр класса CarService.
+     * Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° CarService.
      */
     private CarService carService;
 
     /**
-     * Начальная сборка.
+     * РќР°С‡Р°Р»СЊРЅР°СЏ СЃР±РѕСЂРєР°.
      *
      * @throws IOException
      */
     public void setUp() throws IOException {
         dataSourceProvider = new DataSourceProvider("test.properties");
         carDiler = new CarDiler(dataSourceProvider.getDataSource());
-        car = new Car(612, "A666АА23", false, "2020-10-22", "12:00:00");
-        car1 = new Car(12, "A666АА23", false, "2010-10-02", "23:00:03");
+        car = new Car(612, "A666РђРђ23", false, "2020-10-22", "12:00:00");
+        car1 = new Car(12, "A666РђРђ23", false, "2010-10-02", "23:00:03");
         carDiler.create(car);
         carDiler.create(car1);
         carService = new CarService(carDiler);
@@ -57,7 +56,7 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода create.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° create СЃ РѕРґРЅРёРј РїР°СЂР°РјРµС‚СЂРѕРј.
      */
     public void testCreate() {
         carService.deleteAll();
@@ -74,10 +73,10 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода create с двумя параметрами.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° create СЃ РґРІСѓРјСЏ РїР°СЂР°РјРµС‚СЂР°РјРё.
      */
     public void testCreate2Param() {
-        carService.deleteAll();    // очистил таблицу, иначе я дальше никак не угадаю колво элементов в ней
+        carService.deleteAll();    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ
         carService.create(2, car1);
         carService.create(1, car);
         Map<Integer, Car> carList = carService.findAll();
@@ -91,7 +90,7 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода read.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° read.
      */
     public void testRead() {
         carService.deleteAll();
@@ -102,7 +101,7 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода delete.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° delete.
      */
     public void testDelete() {
         carService.deleteAll();
@@ -128,7 +127,7 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода update.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° update.
      */
     public void testUpdate() {
 
@@ -154,7 +153,7 @@ public class CarServiceTest extends TestCase {
     }
 
     /**
-     * Тест метода deleteAll.
+     * РўРµСЃС‚ РјРµС‚РѕРґР° deleteAll.
      */
     public void testDeleteAll() {
         carService.deleteAll();

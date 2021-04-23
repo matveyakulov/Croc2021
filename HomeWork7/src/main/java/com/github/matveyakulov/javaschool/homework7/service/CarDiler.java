@@ -10,19 +10,19 @@ import java.sql.Date;
 import java.util.*;
 
 /**
- * Класс - репозиторий.
+ * РљР»Р°СЃСЃ Р·Р°РїСЂРѕСЃРѕРІ Рє Р±Рґ.
  */
 public class CarDiler extends Controller {
 
     /**
-     * Название таблицы.
+     * РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹.
      */
     private final String TABLE_NAME = "car";
 
     /**
-     * Идентификатор.
+     * РќРѕРјРµСЂ СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂРѕРєРё.
      */
-    private static int id;
+    private static int id = 1;
 
     /**
      * Data Source.
@@ -35,7 +35,7 @@ public class CarDiler extends Controller {
     }
 
     /**
-     * Создание таблицы, если ее нет.
+     * РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ РµСЃР»Рё РµРµ РЅРµС‚.
      */
     private void initTable() {
         System.out.println(String.format("Start initializing %s table", TABLE_NAME));
@@ -43,19 +43,15 @@ public class CarDiler extends Controller {
         Set<Integer> set = carList.keySet();
         Iterator<Integer> iter = set.iterator();
         while (iter.hasNext()) {
-            id = iter.next() + 1; // получаю последний id
+            id = iter.next() + 1; // РїРѕР»СѓС‡Р°СЋ id
         }
-        if (id == 0) {
-            id = 1;
-        }
+
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             DatabaseMetaData databaseMetadata = connection.getMetaData();
             ResultSet resultSet = databaseMetadata.getTables(
                     null,
                     null,
-                    // Несмотря на то, что мы создаем таблицу в нижнем регистре (и дальше к ней так же обращаемся),
-                    // поиск мы осуществляем в верхнем. Такие вот приколы
                     TABLE_NAME.toUpperCase(),
                     new String[]{"TABLE"});
             if (resultSet.next()) {
@@ -65,7 +61,7 @@ public class CarDiler extends Controller {
                         "CREATE TABLE "
                                 + TABLE_NAME
                                 + " ("
-                                + "id INTEGER, "
+                                + "id INTEGER,"
                                 + "hp INTEGER,"
                                 + "number VARCHAR(10),"
                                 + "wanted BOOLEAN,"
@@ -73,6 +69,8 @@ public class CarDiler extends Controller {
                                 + "time Time"
                                 + ")");
                 System.out.println("Table was successfully initialized");
+                System.setProperty("derby.language.sequence.preallocator", "1");
+
             }
         } catch (SQLException e) {
             System.out.println("Error occurred during table initializing: " + e.getMessage());
@@ -83,20 +81,20 @@ public class CarDiler extends Controller {
 
     @Override
     public void create(Car car) {
-        final String sqlQuery = "INSERT INTO " + TABLE_NAME + " (id, hp, number, wanted, date, time)" +
+        final String sqlQuery = "INSERT INTO " + TABLE_NAME + " (hp, number, wanted, date, time, id)" +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
-            statement.setInt(1, id);
-            statement.setInt(2, car.getHp());
-            statement.setString(3, car.getNumber());
-            statement.setBoolean(4, car.isWanted());
-            statement.setDate(5, Date.valueOf(car.getDate()));
-            statement.setTime(6, Time.valueOf(car.getTime()));
+            statement.setInt(1, car.getHp());
+            statement.setString(2, car.getNumber());
+            statement.setBoolean(3, car.isWanted());
+            statement.setDate(4, Date.valueOf(car.getDate()));
+            statement.setTime(5, Time.valueOf(car.getTime()));
+            statement.setInt(6, id);
             id++;
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
     }
 
@@ -114,7 +112,7 @@ public class CarDiler extends Controller {
             statement.setTime(6, Time.valueOf(car.getTime()));
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
     }
 
@@ -138,7 +136,7 @@ public class CarDiler extends Controller {
 
 
         } catch (Exception e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
         return car;
     }
@@ -157,7 +155,7 @@ public class CarDiler extends Controller {
             preparedStatement.setInt(6, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
     }
 
@@ -170,7 +168,7 @@ public class CarDiler extends Controller {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
 
     }
@@ -194,21 +192,21 @@ public class CarDiler extends Controller {
             }
             return carMap;
         } catch (Exception e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
         return new HashMap<>();
     }
 
     @Override
     public void deleteAll() {
-        id = 1;  // начинаем с начала, так как все записи стерли
+        id = 1;
         final String sqlQuery = "DELETE FROM " + TABLE_NAME;
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.execute(sqlQuery);
 
         } catch (SQLException e) {
-            System.out.println("Ошибка выполнения запроса: " + e.getMessage());
+            System.out.println("РћС€РёР±РєР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РїСЂРѕСЃР°: " + e.getMessage());
         }
 
 
