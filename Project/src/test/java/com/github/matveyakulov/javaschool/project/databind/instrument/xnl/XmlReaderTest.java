@@ -29,6 +29,6 @@ public class XmlReaderTest extends TestCase {
                 "        <pressure>22</pressure>\n" +
                 "    </weather>\n" +
                 "</weathers>\n";
-        Assertions.assertEquals(xml, XmlReader.readFile("src/main/resources/test/test.xml"));
+        Assertions.assertEquals(xml, XmlReader.readFile("src/test/resources/test.xml"));
     }
 }

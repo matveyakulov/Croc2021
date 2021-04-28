@@ -13,7 +13,7 @@ public class DataSourceProviderTest extends TestCase {
     /**
      * Data source.
      */
-    DataSourceProvider dataSourceProvider;
+    private DataSourceProvider dataSourceProvider;
 
     /**
      * Начальная сборка.

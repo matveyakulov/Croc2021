@@ -1,8 +1,8 @@
-package com.github.matveyakulov.javaschool.project.database.service;
+package com.github.matveyakulov.javaschool.project.service;
 
 import com.github.matveyakulov.javaschool.project.model.Weather;
-import com.github.matveyakulov.javaschool.project.model.WeatherPres;
-import com.github.matveyakulov.javaschool.project.model.WeatherTemp;
+import com.github.matveyakulov.javaschool.project.model.fromXml.WeatherPresssure;
+import com.github.matveyakulov.javaschool.project.model.fromXml.WeatherTemperature;
 
 import java.sql.SQLException;
 import java.util.Map;
@@ -15,9 +15,9 @@ public class WeatherService {
     /**
      * Связь с бд.
      */
-    SqlService service;
+    private WeatherInquiries service;
 
-    public WeatherService(SqlService service) {
+    public WeatherService(WeatherInquiries service) {
         this.service = service;
     }
 
@@ -27,7 +27,7 @@ public class WeatherService {
      * @param weather обьект.
      * @throws SQLException
      */
-    public void insert(WeatherTemp weather) throws SQLException {
+    public void insert(WeatherTemperature weather) throws SQLException {
         if (!service.exist(weather.getCity(), weather.getDatetime())) {
             service.insert(weather);
         } else {
@@ -41,7 +41,7 @@ public class WeatherService {
      * @param weather обьект.
      * @throws SQLException
      */
-    public void insert(WeatherPres weather) throws SQLException {
+    public void insert(WeatherPresssure weather) throws SQLException {
 
         if (!service.exist(weather.getCity(), weather.getDatetime())) {
             service.insert(weather);

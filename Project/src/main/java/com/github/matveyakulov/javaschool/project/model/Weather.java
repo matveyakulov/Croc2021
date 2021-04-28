@@ -1,6 +1,9 @@
 package com.github.matveyakulov.javaschool.project.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Погода.
@@ -64,6 +67,25 @@ public class Weather {
 
     public void setPressure(double pressure) {
         this.pressure = pressure;
+    }
+
+    /**
+     * Парсит String и возвращает LocalDateTime.
+     *
+     * @param dateTime дата и время.
+     * @return обьект.
+     */
+    public static LocalDateTime parse(String dateTime){
+        String[] dateTimeArray = dateTime.split("T");
+        dateTimeArray[1].replaceAll("T", "");
+        String[] dateString = dateTimeArray[0].split("-");
+        String[] timeString = dateTimeArray[1].split(":");
+        LocalDate date = LocalDate.of(
+                Integer.parseInt(dateString[0]),
+                Integer.parseInt(dateString[1]),
+                Integer.parseInt(dateString[2]));
+        LocalTime time = LocalTime.of(Integer.parseInt(timeString[0]),Integer.parseInt(timeString[1]));
+        return LocalDateTime.of(date,time);
     }
 
     @Override

@@ -35,16 +35,12 @@ public class DataSourceProvider {
      */
     private void loadProperties(String name) throws IOException {
         Properties properties = new Properties();
-        try {
-            properties.load(
-                    Thread.currentThread().getContextClassLoader().getResourceAsStream(name));
-            for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-                this.properties.put((String) entry.getKey(), (String) entry.getValue());
-            }
-        } catch (Exception e) {
-            System.out.println("Error occurred during loading properties");
-            throw e;
+        properties.load(
+                Thread.currentThread().getContextClassLoader().getResourceAsStream(name));
+        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
+            this.properties.put((String) entry.getKey(), (String) entry.getValue());
         }
+
     }
 
     /**

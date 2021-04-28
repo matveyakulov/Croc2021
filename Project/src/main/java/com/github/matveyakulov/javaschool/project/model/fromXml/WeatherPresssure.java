@@ -1,4 +1,6 @@
-package com.github.matveyakulov.javaschool.project.model;
+package com.github.matveyakulov.javaschool.project.model.fromXml;
+
+import com.github.matveyakulov.javaschool.project.model.Weather;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,7 +12,7 @@ import java.util.Objects;
  * Погода с полем температуры.
  */
 @XmlRootElement(name = "weather")
-public class WeatherPres {
+public class WeatherPresssure {
 
     /**
      * Город.
@@ -22,7 +24,7 @@ public class WeatherPres {
      * Дата и время.
      */
     @XmlElement(name = "datetime")
-    private Timestamp dateTime;
+    private LocalDateTime dateTime;
 
     /**
      * Давление воздуха.
@@ -30,10 +32,10 @@ public class WeatherPres {
     @XmlElement
     private double pressure;
 
-    private WeatherPres() {
+    private WeatherPresssure() {
     }
 
-    public WeatherPres(String city, Timestamp dateTime, double pressure) {
+    public WeatherPresssure(String city, LocalDateTime dateTime, double pressure) {
         this.city = city;
         this.dateTime = dateTime;
         this.pressure = pressure;
@@ -47,12 +49,13 @@ public class WeatherPres {
         this.city = city;
     }
 
-    public Timestamp getDatetime() {
+    public LocalDateTime getDatetime() {
         return dateTime;
     }
 
     public void setDatetime(String dateTime) {
-        this.dateTime = Timestamp.valueOf(LocalDateTime.parse(dateTime));
+
+        this.dateTime = Weather.parse(dateTime);
     }
 
     /**
@@ -73,7 +76,7 @@ public class WeatherPres {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WeatherPres that = (WeatherPres) o;
+        WeatherPresssure that = (WeatherPresssure) o;
         return Double.compare(that.pressure, pressure) == 0
                 && Objects.equals(city, that.city) && Objects.equals(dateTime, that.dateTime);
     }
@@ -87,7 +90,7 @@ public class WeatherPres {
     public String toString() {
         return "{" +
                 "city=" + city +
-                ", date=" + dateTime +
+                ", date=" + Timestamp.valueOf(dateTime) +
                 ", pressure=" + pressure +
                 '}';
     }

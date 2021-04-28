@@ -3,6 +3,9 @@ package com.github.matveyakulov.javaschool.project.databind.instrument.xml;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 /**
  * Класс для чтения текста из файла.
@@ -18,15 +21,15 @@ public class XmlReader {
      */
     public static String readFile(String filePath) throws IOException {
 
-        StringBuilder lines = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.append(line + "\n");
-            }
+        List<String> lines = Files.readAllLines(Path.of(filePath));
 
+        StringBuilder xmlLines = new StringBuilder();
+
+        for(String line : lines){
+            xmlLines.append(line + "\n");
         }
-        return lines.toString();
+
+        return xmlLines.toString();
     }
 
 

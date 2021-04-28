@@ -21,7 +21,7 @@ public class Weathers<T> {
      */
     @JacksonXmlElementWrapper(useWrapping = false)
     @XmlElement(name = "weather")
-    List<T> weathers;
+    private List<T> weathers;
 
     public Weathers() {
         weathers = new ArrayList<>();
@@ -66,5 +66,8 @@ public class Weathers<T> {
     public int size() {
         return weathers.size();
     }
+
+
+
 
 }
