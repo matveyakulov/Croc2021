@@ -20,12 +20,12 @@ public class XmlReaderTest extends TestCase {
         String xml = "<weathers>\n" +
                 "    <weather>\n" +
                 "        <city>Krasnodar</city>\n" +
-                "        <date>2021-02-12T20:00</date>\n" +
+                "        <datetime>2021-02-12T20:00</datetime>\n" +
                 "        <pressure>20</pressure>\n" +
                 "        </weather>\n" +
                 "    <weather>\n" +
                 "        <city>Krasnodar</city>\n" +
-                "        <date>2021-02-13T20:00</date>\n" +
+                "        <datetime>2021-02-13T20:00</datetime>\n" +
                 "        <pressure>22</pressure>\n" +
                 "    </weather>\n" +
                 "</weathers>\n";

@@ -34,7 +34,7 @@ public class XmlConverter{
      * @param xml xml.
      * @return объект Weathers.
      */
-    public static Weathers fromXml(String xml) throws IOException {
+    private static Weathers fromXml(String xml) throws IOException {
         return createXmlMapper().readValue(xml, Weathers.class);
     }
 
