@@ -127,11 +127,11 @@ public class CarDiler extends Controller {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 car = new Car(
-                        resultSet.getInt("hp"),
-                        resultSet.getString("number"),
-                        resultSet.getBoolean("wanted"),
-                        resultSet.getDate("date").toLocalDate(),
-                        resultSet.getTime("time").toLocalTime());
+                        resultSet.getInt(2),
+                        resultSet.getString(3),
+                        resultSet.getBoolean(4),
+                        resultSet.getDate(5).toLocalDate(),
+                        resultSet.getTime(6).toLocalTime());
             }
 
 
@@ -181,20 +181,20 @@ public class CarDiler extends Controller {
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             Map<Integer, Car> carMap = new HashMap();
             while (resultSet.next()) {
-                carMap.put(resultSet.getInt("id"),
+                carMap.put(resultSet.getInt(1),
                         new Car(
-                                resultSet.getInt("hp"),
-                                resultSet.getString("number"),
-                                resultSet.getBoolean("wanted"),
-                                resultSet.getDate("date").toLocalDate(),
-                                resultSet.getTime("time").toLocalTime())
+                                resultSet.getInt(2),
+                                resultSet.getString(3),
+                                resultSet.getBoolean(4),
+                                resultSet.getDate(5).toLocalDate(),
+                                resultSet.getTime(6).toLocalTime())
                 );
             }
             return carMap;
         } catch (Exception e) {
             System.out.println("Ошибка выполнения запроса: " + e.getMessage());
         }
-        return new HashMap<>();
+        return null;
     }
 
     @Override

@@ -1,17 +1,11 @@
 package com.github.matveyakulov.javaschool.project.model.fromXml;
 
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.fasterxml.jackson.databind.util.StdConverter;
 import com.github.matveyakulov.javaschool.project.model.Weather;
-import com.github.matveyakulov.javaschool.project.model.Weathers;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -90,30 +84,6 @@ public class WeatherTemperature {
                 ", date=" + Timestamp.valueOf(dateTime) +
                 ", temperature=" + temperature +
                 '}';
-    }
-
-    class Converter extends StdConverter<Weathers<WeatherTemperature>, Weathers<WeatherTemperature>> {
-
-        @Override
-        public Weathers<WeatherTemperature> convert(Weathers<WeatherTemperature> weathers) {
-            List<WeatherTemperature> weatherTemperatures = new ArrayList<>();
-            for(int i = 0; i < weathers.size(); i++){
-                weatherTemperatures.add(weathers.get(i));
-            }
-            return new Weathers<WeatherTemperature>(weatherTemperatures);
-        }
-
-        @Override
-        public JavaType getInputType(TypeFactory typeFactory){
-            return typeFactory.constructCollectionType(ArrayList.class, WeatherTemperature.class);
-        }
-
-        @Override
-        public JavaType getOutputType(TypeFactory typeFactory){
-            return typeFactory.constructCollectionType(ArrayList.class, WeatherTemperature.class);
-        }
-
-
     }
 
 }
